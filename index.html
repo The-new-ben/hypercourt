@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HyperCourt Supabase Edition</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>HyperCourt — Supabase Edition</h1>
+    <div class="controls">
+      <select id="languageSelect" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="he">עברית</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+      <button onclick="loadCases()">Refresh</button>
+      <a href="/.netlify/functions/health" target="_blank">Health</a>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2 data-i18n="newCase">New Case</h2>
+      <form id="caseForm" onsubmit="createCase(event)">
+        <label><span data-i18n="titleLabel">Title:</span>
+          <input id="caseTitle" required />
+        </label>
+        <label><span data-i18n="descriptionLabel">Description:</span>
+          <textarea id="caseDescription" rows="4"></textarea>
+        </label>
+        <div class="row">
+          <button type="button" onclick="summarizeAI()" data-i18n="summarize">Summarize with AI</button>
+          <button type="button" onclick="translateDescription()" data-i18n="translate">Translate</button>
+        </div>
+        <div id="aiResult" class="muted"></div>
+        <div class="row">
+          <label><span data-i18n="evidenceLabel">Evidence File:</span>
+            <input id="evidenceFile" type="file" onchange="hashFile(event)" />
+          </label>
+        </div>
+        <button type="submit" data-i18n="createCaseButton">Create Case</button>
+      </form>
+    </section>
+    <section>
+      <h2 data-i18n="cases">Cases</h2>
+      <ul id="casesList"></ul>
+    </section>
+    <section>
+      <h2>Seed Demo Data</h2>
+      <button onclick="seedDemo()">Run Seed</button>
+      <span class="muted">Run once after first deploy to Supabase.</span>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

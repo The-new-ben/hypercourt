@@ -1,0 +1,9 @@
+{
+  "name": "hypercourt-supabase-pro-kit",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.5",
+    "node-fetch": "^3.3.2"
+  }
+}
